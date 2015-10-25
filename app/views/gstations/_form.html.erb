@@ -1,0 +1,41 @@
+<%= form_for(@gstation) do |f| %>
+  <% if @gstation.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@gstation.errors.count, "error") %> prohibited this gstation from being saved:</h2>
+
+      <ul>
+      <% @gstation.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br>
+    <%= f.text_area :name %>
+  </div>
+  <div class="field">
+    <%= f.label :lat %><br>
+    <%= f.text_field :lat %>
+  </div>
+  <div class="field">
+    <%= f.label :lon %><br>
+    <%= f.text_field :lon %>
+  </div>
+  <div class="field">
+    <%= f.label :rating %><br>
+    <%= f.text_field :rating %>
+  </div>
+  <div class="field">
+    <%= f.label :queue %><br>
+    <%= f.number_field :queue %>
+  </div>
+  <div class="field">
+    <%= f.label :gasavail %><br>
+    <%= f.number_field :gasavail %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

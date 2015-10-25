@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Name:</strong>
+  <%= @gstation.name %>
+</p>
+
+<p>
+  <strong>Lat:</strong>
+  <%= @gstation.lat %>
+</p>
+
+<p>
+  <strong>Lon:</strong>
+  <%= @gstation.lon %>
+</p>
+
+<p>
+  <strong>Rating:</strong>
+  <%= @gstation.rating %>
+</p>
+
+<p>
+  <strong>Queue:</strong>
+  <%= @gstation.queue %>
+</p>
+
+<p>
+  <strong>Gasavail:</strong>
+  <%= @gstation.gasavail %>
+</p>
+
+<%= link_to 'Edit', edit_gstation_path(@gstation) %> |
+<%= link_to 'Back', gstations_path %>

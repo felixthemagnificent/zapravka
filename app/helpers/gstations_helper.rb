@@ -1,0 +1,2 @@
+module GstationsHelper
+end
