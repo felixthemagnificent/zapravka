@@ -56,7 +56,7 @@
      user: 'felix', # overrides user setting above
 #     keys: %w(/home/user_name/.ssh/id_rsa),
      forward_agent: false,
-     auth_methods: %w(publickey password),
+     auth_methods: %w(password),
      password: 'feelthepower',
      port: 8825
    }
