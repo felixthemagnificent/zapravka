@@ -49,7 +49,7 @@
 #
 # The server-based syntax can be used to override options:
 # ------------------------------------
- server 'tom.uz',
+ server '5.178.86.91',
    user: 'felix',
    roles: %w{web app},
    ssh_options: {
@@ -58,5 +58,5 @@
      forward_agent: false,
      auth_methods: %w(password),
      password: 'feelthepower',
-     port: 8825
+     #port: 8825
    }

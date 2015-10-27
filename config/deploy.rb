@@ -34,16 +34,26 @@ set :deploy_to, '/site/zapravka'
 # Default value for keep_releases is 5
 # set :keep_releases, 5
 
-namespace :deploy do
+# Clean up all older releases
+after "deploy:restart", "deploy:cleanup"
 
-  after :restart, :clear_cache do
-    on roles(:web), in: :groups, limit: 3, wait: 10 do
-      unicorn:duplicate
-      # Here we can do anything such as:
-      # within release_path do
-      #   execute :rake, 'cache:clear'
-      # end
-    end
+# This is where the actual deployment with Unicorn happens.
+namespace :deploy do
+  desc "Start the Unicorn process when it isn't already running."
+  task :start do
+  	run "bundle install"
+    run "cd #{current_path} && unicorn -Dc #{shared_path}/config/unicorn.rb -E #{rails_env}"
   end
 
+  desc "Initiate a rolling restart by telling Unicorn to start the new application code and kill the old process when done."
+  task :restart do
+  	run "bundle install"
+    run "kill -USR2 $(cat #{shared_path}/pids/unicorn.pid)"
+  end
+
+  desc "Stop the application by killing the Unicorn process"
+  task :stop do
+  	run "bundle install"
+    run "kill $(cat #{shared_path}/pids/unicorn.pid)"
+  end
 end
